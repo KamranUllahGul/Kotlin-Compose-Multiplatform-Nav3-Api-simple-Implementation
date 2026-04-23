@@ -1,16 +1,61 @@
 This is a Kotlin Multiplatform project targeting Android, iOS.
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+# 📱 Compose Multiplatform Navigation Sample (Nav3 + Nested Navigation)
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+A modern **Compose Multiplatform (CMP)** sample demonstrating how to implement **Navigation 3 API** with **nested navigation graphs**.
+
+---
+
+## 🚀 Features
+- 🧭 Navigation 3 API integration
+- 🔀 Nested Navigation (Graph inside Graph)
+- 📱 Multiple Screens (Home, Details, Profile, etc.)
+- ⚡ Clean architecture for navigation handling
+- 🌍 Compose Multiplatform ready
+
+---
+
+## 🧱 Tech Stack
+- Kotlin
+- Jetpack Compose / Compose Multiplatform
+- Navigation 3 (Nav3)
+
+---
+
+## 📂 Dependencies Uesed
+in libs.toml [versions]
+```kotlin
+# For native Android
+navigation3 = "1.0.0"
+# For Compose Multiplatform
+cmpNavigation3 = "1.0.0-alpha05"
+```
+
+in libs.toml  [libraries]
+```kotlin
+# For Compose Multiplatform
+jetbrains-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "cmpNavigation3" }
+jetbrains-lifecycle-viewmodel-nav3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "androidx-lifecycle" }
+jetbrains-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle"}
+
+# For native Android
+androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "navigation3" }
+androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
+
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.9.0" }
+```
+in libs.toml [plugins]
+```kotlin
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+```
+
+in common gradle
+```kotlin
+            implementation(libs.jetbrains.navigation3.ui)
+            implementation(libs.jetbrains.lifecycle.viewmodel.nav3)
+            implementation(libs.jetbrains.lifecycle.viewmodel)
+            implementation(libs.kotlinx.serialization.json)
+```
 
 ### Build and Run Android Application
 
