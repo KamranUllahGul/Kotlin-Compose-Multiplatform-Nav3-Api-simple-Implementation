@@ -22,7 +22,7 @@ A modern **Compose Multiplatform (CMP)** sample demonstrating how to implement *
 
 ---
 
-## 📂 Dependencies Uesed
+## 📂 Dependencies Used
 in libs.toml [versions]
 ```kotlin
 # For native Android
